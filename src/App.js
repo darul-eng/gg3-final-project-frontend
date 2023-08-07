@@ -1,24 +1,43 @@
 import logo from './logo.svg';
 import './App.css';
+import {ChakraProvider, extendTheme} from "@chakra-ui/react";
+import {createBrowserRouter, createRoutesFromElements, Outlet, Route, RouterProvider} from "react-router-dom";
+import Home from "./pages/Home";
+import VideoDetail from "./pages/VideoDetail";
+
+
+const router = createBrowserRouter(
+    createRoutesFromElements(
+        <Route path="/channels">
+            <Route index element={<Home/>}/>
+            <Route path='/channels/:videoId' element={<VideoDetail/>}/>
+        </Route>
+    )
+)
+
+const theme = extendTheme({
+    colors: {
+        brand: {
+            900: '#1a202c',
+        },
+    },
+    styles: {
+        global: {
+            body: {
+                bg: 'brand.900',
+                color: "white"
+            },
+        },
+    },
+});
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+      <ChakraProvider theme={theme}>
+          {/*<Outlet>*/}
+              <RouterProvider router={router}/>
+          {/*</Outlet>*/}
+      </ChakraProvider>
   );
 }
 
