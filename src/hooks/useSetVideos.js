@@ -8,7 +8,7 @@ const useSetVideos = (search, depend) => {
         title: search
     }
     //custom hooks to request api
-    useRequestAPI("GET", `/videos`, {}, params, depend)
+    useRequestAPI("GET", `/api/v1/videos`, {}, params, depend)
         .then(responses => setVideos(responses))
 }
 

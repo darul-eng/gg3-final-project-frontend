@@ -10,7 +10,8 @@ import {io} from "socket.io-client";
 
 export default function CommentForm({videoId}){
     const [socket, setSocket] = useState(null);
-    const apiUrl = process.env.REACT_APP_API_URL;
+    const API_URI = process.env.REACT_APP_API_URL;
+    const HOST_SOCKET = process.env.REACT_APP_HOST_SOCKET
     const [formData, setFormData] = useState({
        videoID: videoId,
        username: '',
@@ -18,7 +19,7 @@ export default function CommentForm({videoId}){
     })
 
     useEffect(() => {
-        setSocket(io("http://localhost:4000"))
+        setSocket(io(HOST_SOCKET))
     }, [])
 
     const handleSubmit = async (e) => {
@@ -27,9 +28,9 @@ export default function CommentForm({videoId}){
         const headers = {
             Accept: "application/json"
         }
-        await axios.post(apiUrl+`/videos/${videoId}/comments`, formData, headers)
+        const comment = await axios.post(API_URI+`/api/v1/videos/${videoId}/comments`, formData, headers)
 
-        socket.emit('from-client', formData)
+        socket.emit('from-client', comment.data.data)
 
         setFormData({videoID: videoId, username: "", comment: ""})
     }

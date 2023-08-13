@@ -3,7 +3,7 @@ import {useEffect, useState} from "react";
 
 const useRequestAPI = async (method, path, data = {}, params = {}, depend = false) => {
     const [responses, setResponses] = useState(null);
-    const apiUrl = process.env.REACT_APP_API_URL;
+    const API_URL = process.env.REACT_APP_API_URL;
 
     const headers = {
         Accept: "application/json"
@@ -14,17 +14,12 @@ const useRequestAPI = async (method, path, data = {}, params = {}, depend = fals
             let ignore = false;
             axios({
                 method: method,
-                url: apiUrl+path,
+                url: API_URL+path,
                 data: data,
                 headers: headers,
                 params: params
             })
                 .then(responses => setResponses(responses.data))
-                // .then(data => {
-                //     if(!ignore){
-                //         setResponses(data)
-                //     }
-                // });
             return () => {
                 ignore = true
             };

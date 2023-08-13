@@ -13,9 +13,10 @@ import axios from "axios";
 export default function VideoDetail() {
     let {videoId} = useParams()
     const [comments, setComments] = useState([])
+    const API_URI = process.env.REACT_APP_API_URL;
 
     useEffect(() => {
-        axios.get(`http://localhost:4000/api/v1/videos/${videoId}/comments`).then(responses => setComments(responses.data.data))
+        axios.get(`${API_URI}/api/v1/videos/${videoId}/comments`).then(responses => setComments(responses.data.data))
     }, [])
 
     return (

@@ -13,8 +13,6 @@ import {
 import {ArrowBackIcon, SearchIcon} from "@chakra-ui/icons";
 import {useState} from "react";
 import {useNavigate} from "react-router-dom"
-import {useRequestAPI} from "../hooks/useRequestAPI";
-import {useVideos} from "../context/VideosContext";
 import {useSetVideos} from "../hooks/useSetVideos";
 
 export default function Nav({isDetail}){

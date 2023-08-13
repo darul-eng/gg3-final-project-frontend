@@ -25,7 +25,7 @@ export default function Videos(){
     }
 
     return (
-        <SimpleGrid p="10px" columnGap={6} rowGap={6} minChildWidth="300px">
+        <SimpleGrid p="10px" columnGap={6} rowGap={6} minChildWidth="300px" >
             {videos.data?.map((video, index) => {
                 return (
                     <LinkRouter key={index} to={`/channels/${video.videoID}`}>

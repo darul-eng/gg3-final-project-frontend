@@ -1,7 +1,6 @@
 import {
     Card,
     CardBody,
-    HStack,
     List,
     Stack,
     Text,
@@ -11,14 +10,14 @@ import {
     Skeleton,
     Link
 } from "@chakra-ui/react";
-import {useEffect, useState} from "react";
+import {useState} from "react";
 import {useRequestAPI} from "../../hooks/useRequestAPI"
 
 export default function ProductList({videoId}){
     const [products, setProducts] = useState(null);
 
     //custom hooks to request api
-    useRequestAPI("GET", `/videos/${videoId}/products`, {})
+    useRequestAPI("GET", `/api/v1/videos/${videoId}/products`, {})
         .then(responses => setProducts(responses))
 
     if (products === null || products.length === 0){
