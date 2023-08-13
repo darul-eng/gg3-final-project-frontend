@@ -1,16 +1,19 @@
 import logo from './logo.svg';
 import './App.css';
 import {ChakraProvider, extendTheme} from "@chakra-ui/react";
-import {createBrowserRouter, createRoutesFromElements, Outlet, Route, RouterProvider} from "react-router-dom";
+import {createBrowserRouter, createRoutesFromElements, Navigate, Outlet, Route, RouterProvider} from "react-router-dom";
 import Home from "./pages/Home";
 import VideoDetail from "./pages/VideoDetail";
 
 
 const router = createBrowserRouter(
     createRoutesFromElements(
-        <Route path="/channels">
-            <Route index element={<Home/>}/>
-            <Route path='/channels/:videoId' element={<VideoDetail/>}/>
+        <Route>
+            <Route index element={<Navigate to="/channels"/>}></Route>
+            <Route path="/channels">
+                <Route index element={<Home/>}/>
+                <Route path='/channels/:videoId' element={<VideoDetail/>}/>
+            </Route>
         </Route>
     )
 )
