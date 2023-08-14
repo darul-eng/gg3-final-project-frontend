@@ -6,10 +6,8 @@ import {
     Text, Flex, Skeleton
 } from "@chakra-ui/react";
 import {TimeIcon} from "@chakra-ui/icons";
-import {Link as LinkRouter} from "react-router-dom"
-import {useState} from "react";
-import {useRequestAPI} from "../../hooks/useRequestAPI";
-import {useVideos, VideosProvider} from "../../context/VideosContext";
+import {Link as LinkRouter} from "react-router-dom";
+import {useVideos} from "../../context/VideosContext";
 
 export default function Videos(){
     const {videos} = useVideos();

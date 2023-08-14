@@ -1,12 +1,16 @@
 import axios from "axios";
 import {useEffect, useState} from "react";
+import {useCookies} from "react-cookie";
 
 const useRequestAPI = async (method, path, data = {}, params = {}, depend = false) => {
     const [responses, setResponses] = useState(null);
     const API_URL = process.env.REACT_APP_API_URL;
+    const [cookies, setCookies] = useCookies(["access_token"])
+    const token = cookies.access_token
 
     const headers = {
-        Accept: "application/json"
+        Accept: "application/json",
+        Authorization: `Bearer ${token}`
     }
 
     useEffect( () => {
