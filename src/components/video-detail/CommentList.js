@@ -18,8 +18,6 @@ export default function CommentList({comments, setComments}){
         setComments(updatedComments)
     })
 
-    console.log(comments)
-
     if (comments === null){
         return (
             <Stack>

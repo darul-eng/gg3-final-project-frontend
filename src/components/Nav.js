@@ -8,18 +8,19 @@ import {
     InputGroup,
     Spacer,
     Text,
-    Divider
 } from "@chakra-ui/react";
 import {ArrowBackIcon, SearchIcon} from "@chakra-ui/icons";
 import {useState} from "react";
 import {useNavigate} from "react-router-dom"
 import {useSetVideos} from "../hooks/useSetVideos";
+import {useCookies} from "react-cookie";
 
 export default function Nav({isDetail}){
     const navigate = useNavigate();
     const [isSearchVisible, setIsSearchVisible] = useState(false)
     const [search, setSearch] = useState("");
     const [depend, setDepend] = useState(false)
+    const [cookies, setCookies] = useCookies(["username", "urlProfileImage"])
 
     const handleSearchIcon = () => {
         setIsSearchVisible(!isSearchVisible)
@@ -41,6 +42,13 @@ export default function Nav({isDetail}){
 
     // custom hooks to perform setVideos from search result or get all videos
     useSetVideos(search, depend)
+
+    const handleLogout = () => {
+        setCookies('access_token', "");
+        setCookies('username', "");
+        setCookies('urlProfileImage', "");
+        navigate('/login');
+    }
 
     return (
         <Flex as="nav" p="20px" my="10px" alignItems="center">
@@ -70,10 +78,10 @@ export default function Nav({isDetail}){
                 <HStack>
                     <Box ml='5' mr='3'>
                         <Text fontWeight='bold'>
-                            Segun Adebayo
+                            {cookies.username}
                         </Text>
                     </Box>
-                    <Avatar src='https://bit.ly/sage-adebayo' />
+                    <Avatar src={cookies.urlProfileImage} _hover={{ cursor: 'pointer'}} onClick={handleLogout}/>
                 </HStack>
             )}
         </Flex>
