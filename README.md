@@ -4,7 +4,7 @@ A User Interface built using React with Axios to fetch API from Backend.
 
 ---
 
-## How to Use
+## How to Run
 You can access production using url below
 
 - Backend: [http://103.185.193.30:4000](http://103.185.193.30:4000)
