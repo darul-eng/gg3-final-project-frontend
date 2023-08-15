@@ -1,6 +1,8 @@
 # Tokopedia Play Clone - Front-End
 
-A User Interface built using React with Axios to fetch API from Backend.
+A User Interface built using React with Axios to fetch API from Backend. The app is a ReactJS project that gives users access to a variety of features, including displaying a list of videos along with search options, the ability to view video details with an embedded YouTube player, a list of related products, and comments that update in real-time.
+
+
 
 ---
 
@@ -29,13 +31,20 @@ Be sure to complete the following requirements
 ## Explanation of Pages
 ### Feature
 
+- Default Credentials
+
+  `username: darulikhsan`
+
+  `password: 12345`
+
 - Register
     - Access the app at URL `/`.
     - Click on the "Register" option to register as a new user.
+    - Input your username and password, if success page will navigate to SignIn
 
 - Login
     - Access the app at URL `/login`.
-    - Enter your credentials to log in to the user account.
+    - Enter the credentials you created earlier or use the default credentials above to log in to the user account.
 
 - Home Page
     - Access the app at URL `/channels`.
@@ -49,5 +58,19 @@ Be sure to complete the following requirements
     - On the right, there is a comment section. Logged-in users can comment.
     - Click on the user photo to log out.
 
+
+---
+
+
+## Explanation of Structure Project
+1. In the root project you can see several folders and files, such as src, env.local-example, package.json, Dockerfile and so on.
+2. Inside the src folder there are several folders and files
+
+   - there is index.js and App.js which is the starting point of this project, in app js there is a definition of `React Router`
+   - then there is a pages folder, which stores files according to the pages of the application, namely Authentication, Home, and Video Details.
+   - then there is a components folder that contains the components used to build this application.
+   - then there is a hooks folder that contains custom hooks that are used in this application.
+   - then there is a context folder that stores the video context as data that can be accessed by all its children.
+   - finally there is a helper folder that contains functions used for application utilities
 
 ---
