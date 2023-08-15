@@ -8,15 +8,24 @@ import Nav from "../components/Nav";
 import {VideosProvider} from "../context/VideosContext";
 import {useEffect, useState} from "react";
 import axios from "axios";
+import {useCookies} from "react-cookie";
 
 
 export default function VideoDetail() {
     let {videoId} = useParams()
     const [comments, setComments] = useState([])
     const API_URI = process.env.REACT_APP_API_URL;
+    const [cookies, setCookies] = useCookies(["access_token"])
+    const token = cookies.access_token
 
+    const headers = {
+        Accept: 'application/json',
+        Authorization: `Bearer ${token}`
+    }
     useEffect(() => {
-        axios.get(`${API_URI}/api/v1/videos/${videoId}/comments`).then(responses => setComments(responses.data.data))
+        axios.get(`${API_URI}/api/v1/videos/${videoId}/comments`, {
+            headers: headers
+        }).then(responses => setComments(responses.data.data))
     }, [])
 
     return (

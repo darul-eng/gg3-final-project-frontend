@@ -6,7 +6,7 @@ import {
     ListItem
 } from "@chakra-ui/react";
 import {io} from "socket.io-client";
-import {getTimeAgo, formatDate} from "../../helpers/formatDate";
+import {formatDate} from "../../helpers/formatDate";
 
 export default function CommentList({comments, setComments}){
     const socket = io(process.env.REACT_APP_HOST_SOCKET)
@@ -17,8 +17,6 @@ export default function CommentList({comments, setComments}){
 
         setComments(updatedComments)
     })
-
-    console.log(comments)
 
     if (comments === null){
         return (
@@ -33,7 +31,7 @@ export default function CommentList({comments, setComments}){
     return (
            <List spacing={3}
                  overflowY="auto"
-                 maxH="75vh"
+                 maxH="60vh"
                  sx={{
                      '&::-webkit-scrollbar': {
                          width: '16px',
@@ -46,7 +44,7 @@ export default function CommentList({comments, setComments}){
                  }}
                 css={{
                     display: 'flex',
-                        flexDirection: 'column-reverse', // Mengatur urutan data menjadi terbalik
+                        flexDirection: 'column-reverse',
                 }}
            >
                {comments?.map((comment, index) => {
@@ -54,7 +52,7 @@ export default function CommentList({comments, setComments}){
                        <ListItem key={index}>
                            <Text as="span" fontWeight="bold" mr={2}>{comment.username}</Text>
                            <Text as="span">{comment.comment}</Text>
-                           <Text fontSize={"xs"}>{getTimeAgo(comment.createdAt)}</Text>
+                           <Text fontSize={"xs"}>{formatDate(comment.createdAt)}</Text>
                        </ListItem>
                    )
                })}
