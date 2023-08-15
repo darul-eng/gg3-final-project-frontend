@@ -8,7 +8,7 @@ A User Interface built using React with Axios to fetch API from Backend.
 You can access production using url below
 
 - Backend: [http://103.185.193.30:4000](http://103.185.193.30:4000)
-- Full Website: [http://103.185.193.30:4000](http://103.185.193.30:3000)
+- Full Website: [http://103.185.193.30:3000](http://103.185.193.30:3000)
 - Docker Image: `docker pull drlkhsn/gigih-frontend:2.0`
 
 ### Requirements
