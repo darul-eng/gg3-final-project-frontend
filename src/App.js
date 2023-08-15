@@ -1,3 +1,4 @@
+import './App.css';
 import {ChakraProvider, extendTheme} from "@chakra-ui/react";
 import {createBrowserRouter, createRoutesFromElements, Navigate, Route, RouterProvider} from "react-router-dom";
 import Home from "./pages/Home";
